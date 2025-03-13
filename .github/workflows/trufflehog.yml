@@ -2,7 +2,7 @@ name: trufflehog
 on: 
   push:
     paths:
-      - .github/workflows/trufflehog-action.yml
+      - .github/workflows/trufflehog.yml
   workflow_dispatch:
 
 jobs:
