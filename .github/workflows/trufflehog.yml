@@ -1,0 +1,25 @@
+name: trufflehog
+on: 
+  push:
+    paths:
+      - .github/workflows/trufflehog-action.yml
+  workflow_dispatch:
+
+jobs:
+  truffle:
+    runs-on: ubuntu-latest
+    environment: Stage
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Accuknox Secret Scan
+        uses: accuknox/secret-scan-action@v1.0.0
+        with:
+          endpoint: ${{ secrets.CSPM_URL }}
+          tenant_id: '5'
+          label: 'trufflehog'
+          token: ${{ secrets.CSPM_TOKEN }}
+          fail: "false"
